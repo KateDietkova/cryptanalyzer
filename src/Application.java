@@ -1,12 +1,7 @@
 import core.CryptAnalyzer;
 
-public class Main {
+public class Application {
     public static void main(String[] args) {
-
-        for (String arg: args) {
-            System.out.println(arg);
-        }
-
         new CryptAnalyzer(args).run();
     }
 }

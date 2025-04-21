@@ -35,34 +35,15 @@ public class CeasarEncrypt implements IEncryptService {
     }
 
     private char getEncryptedChar(int oldCharIdx, int key, String symbolsSource) {
-        char encryptedChar;
         int newCharIdx = oldCharIdx + key;
-        boolean isIdxBiggerThenSourceLength = newCharIdx > symbolsSource.length() - 1;
+        int length = symbolsSource.length();
 
-        if(isIdxBiggerThenSourceLength) {
-            encryptedChar = getEncryptedCharWithPositiveKey(newCharIdx, symbolsSource);
-            return encryptedChar;
-        } else if(newCharIdx < 0) {
-           encryptedChar = getEncryptedCharWithNegativeKey(newCharIdx, symbolsSource);
-           return encryptedChar;
-        } else {
-            return symbolsSource.charAt(newCharIdx);
-        }
-    }
-
-
-    private char getEncryptedCharWithPositiveKey(int newCharIdx, String symbolsSource) {
-        int lastIdxOfSource = symbolsSource.length() - 1;
-        while (newCharIdx > lastIdxOfSource) {
-            newCharIdx = newCharIdx - lastIdxOfSource;
+        while (newCharIdx >= length) {
+            newCharIdx -= length;
         }
 
-        return symbolsSource.charAt(newCharIdx);
-    }
-    private char getEncryptedCharWithNegativeKey(int newCharIdx, String symbolsSource) {
-        int lastIdxOfSource = symbolsSource.length() - 1;
         while (newCharIdx < 0) {
-            newCharIdx = lastIdxOfSource + newCharIdx;
+            newCharIdx += length;
         }
 
         return symbolsSource.charAt(newCharIdx);

@@ -22,7 +22,7 @@ public class FileReaderUtils {
                 String line;
 
                 while ((line = reader.readLine()) != null) {
-                    strBuilder.append(line).append("/n");
+                    strBuilder.append(line).append("\n");
                 }
                  return strBuilder.toString();
 
